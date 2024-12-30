@@ -7,6 +7,23 @@ warnings.filterwarnings("ignore", category=UserWarning, message=".*FLAML.*")
 
 load_dotenv()
 
+"""
+This script demonstrates the ALWAYS human input mode in AutoGen agents.
+It creates a guessing game where:
+- One agent thinks of an elephant and can only answer yes/no questions
+- A human proxy agent makes guesses through human input
+- Every interaction requires human input (no autonomous responses)
+- The game ends automatically if 'elephant' is guessed correctly
+
+The ALWAYS mode ensures human input is required for every interaction.
+This shows how agents can be used to create interactive experiences
+where a human user maintains full control of the conversation flow.
+The conversation will continue prompting for human input until either:
+1. The human chooses to exit
+2. The correct animal (elephant) is guessed
+
+"""
+
 model = "gpt-3.5-turbo"
 llm_config = {
     "model": model,

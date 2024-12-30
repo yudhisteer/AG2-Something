@@ -8,17 +8,17 @@ warnings.filterwarnings("ignore", category=UserWarning, message=".*FLAML.*")
 load_dotenv()
 
 """
-This script demonstrates the NEVER human input mode in AutoGen agents.
+This script demonstrates the TERMINATE human input mode in AutoGen agents.
 It creates a guessing game where:
 - One agent thinks of an elephant and can only answer yes/no questions
 - Another agent tries to guess the animal by asking questions
-- Both agents operate completely autonomously without human intervention
+- The human can intervene at any point to terminate the conversation
 - The game ends automatically if 'elephant' is guessed correctly
 
-The NEVER mode creates a fully autonomous conversation between agents.
-The conversation will continue automatically until the correct animal (elephant) is guessed.
-This shows how agents can carry out structured interactions without human input.
-
+The TERMINATE mode allows human intervention while still enabling autonomous agent interaction.
+The conversation will continue automatically until either:
+1. The human chooses to terminate it
+2. The correct animal (elephant) is guessed
 """
 
 model = "gpt-3.5-turbo"
@@ -36,8 +36,9 @@ agent_with_animal = ConversableAgent(
     - Never reveal directly that it's an elephant
     - Only confirm if someone explicitly guesses 'elephant'""",
     llm_config=llm_config,
+    max_consecutive_auto_reply=1,
     is_termination_msg=lambda msg: "elephant" in msg["content"].lower(),
-    human_input_mode="NEVER",
+    human_input_mode="TERMINATE",
 )
 
 agent_guess_animal = ConversableAgent(
@@ -50,7 +51,6 @@ agent_guess_animal = ConversableAgent(
     llm_config=llm_config,
     human_input_mode="NEVER",
 )
-
 
 agent_with_animal.initiate_chat(
     recipient=agent_guess_animal,
