@@ -30,13 +30,26 @@ assistant = ConversableAgent(
 )
 
 
-user_proxy = UserProxyAgent(
+user_proxy = ConversableAgent(
     name="User",
     is_termination_msg=lambda msg: msg.get("content") is not None and "TERMINATE" in msg["content"],
     llm_config=llm_config,
+    human_input_mode="NEVER"
 )
 
 
+# register tools with the assistant
+assistant.register_for_llm(name="add_numbers", description="Add two numbers")(add_numbers)
+assistant.register_for_llm(name="multiply_numbers", description="Multiply two numbers")(multiply_numbers)
 
+# register tools with the user_proxy
+user_proxy.register_for_execution(name="add_numbers")(add_numbers)
+user_proxy.register_for_execution(name="multiply_numbers")(multiply_numbers)
+
+
+user_proxy.initiate_chat(
+    recipient=assistant,
+    message="Add 3 and 2"
+)
 
 
