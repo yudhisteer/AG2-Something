@@ -9,6 +9,22 @@ warnings.filterwarnings("ignore", category=UserWarning, message=".*FLAML.*")
 
 load_dotenv()
 
+"""
+This script implements a financial reporting framework using the autogen library, which facilitates the interaction between multiple agents to automate the process of generating financial reports.
+
+Key Components:
+1. **Data_Aggregation_Agent**: This agent is responsible for collecting and aggregating financial data from a provided CSV file. It processes the data to prepare it for analysis and reporting.
+
+2. **Report_Generation_Agent**: This agent takes the aggregated financial data and generates detailed financial reports. It formats the information in a way that is easy to understand and presents key financial metrics.
+
+3. **Accuracy_Review_Agent**: This agent reviews the generated financial report to ensure that all figures are accurate and consistent with the original data. It checks for any discrepancies or errors in the report.
+
+4. **Compliance_Review_Agent**: This agent ensures that the financial report adheres to relevant regulations and standards. It verifies that all necessary compliance requirements are met before the report is finalized.
+
+The structure of this script allows for a streamlined and efficient process in generating financial reports, enhancing accuracy and compliance while reducing manual effort.
+"""
+
+
 model = "gpt-3.5-turbo"
 llm_config = {
     "model": model,
