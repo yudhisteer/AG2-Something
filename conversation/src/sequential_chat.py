@@ -8,6 +8,32 @@ warnings.filterwarnings("ignore", category=UserWarning, message=".*FLAML.*")
 
 load_dotenv()
 
+"""
+# This script sets up a framework for sequential chat interactions using the autogen library.
+# 
+# - Defines the model to be used (gpt-3.5-turbo) and its configuration settings:
+#   - Temperature for randomness in responses.
+#   - API key fetched from environment variables.
+#   - Configuration list for retries and timeout settings.
+# 
+# 
+# - Initializes multiple ConversableAgent instances:
+#   - Initial_Agent: Echoes back the input text.
+#   - Uppercase_Agent: Converts input text to uppercase.
+#   - WordCount_Agent: Counts the number of words in the input text.
+#   - ReverseText_Agent: Reverses the input text.
+# 
+# - Each agent is configured with a specific system message and the same LLM configuration.
+# 
+# In this setup, messages are passed from one agent to the next in a chain-like manner. 
+# Each agent processes the input it receives and produces an output that is then sent to the subsequent agent. 
+# This allows for a collaborative interaction where each agent contributes its unique functionality to the overall conversation.
+
+
+
+
+"""
+
 model = "gpt-3.5-turbo"
 llm_config = {
     "model": model,
