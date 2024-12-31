@@ -8,6 +8,12 @@ warnings.filterwarnings("ignore", category=UserWarning, message=".*FLAML.*")
 
 load_dotenv()
 
+"""
+This script defines a simple calculator tool using AI agents. 
+It utilizes the OpenAI GPT-3.5-turbo model to perform basic arithmetic operations such as addition and multiplication. 
+The script sets up two ConversableAgent instances: one for the calculator assistant and another for the user. 
+The assistant can execute registered functions for adding and multiplying numbers, while the user agent can initiate a chat with the assistant to perform calculations. 
+"""
 
 
 model = "gpt-3.5-turbo"
