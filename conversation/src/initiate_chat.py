@@ -8,6 +8,25 @@ warnings.filterwarnings("ignore", category=UserWarning, message=".*FLAML.*")
 
 load_dotenv()
 
+"""
+- Implements a conversational AI system for travel planning.
+- Utilizes the autogen library for AI agent management, specifically using the `ConversableAgent` class.
+- The `ConversableAgent` class allows for the creation of agents that can engage in dialogue, manage conversation states, and execute tool calls.
+- Features two agent instances: 
+  - **Traveler Agent**: 
+    - Interacts with users to gather information about their travel preferences.
+    - Asks specific questions about destinations to tailor recommendations.
+    - Expresses preferences and seeks itinerary advice based on user input.
+  - **Guide Agent**: 
+    - Provides customized recommendations based on the queries from the Traveler Agent.
+    - Shares practical travel advice and tips to enhance the travel experience.
+    - Suggests itineraries and activities that align with the user's interests.
+- Initializes agents with specific configurations and system messages to define their roles and behaviors.
+- Orchestrates a chat session between the Traveler Agent and Guide Agent to facilitate a dynamic dialogue.
+- Focuses on travel options for a trip to Japan, ensuring relevant and engaging interactions.
+- Enhances user travel planning through dynamic dialogue, allowing for a more personalized experience.
+"""
+
 model = "gpt-3.5-turbo"
 llm_config = {
     "model": model,
