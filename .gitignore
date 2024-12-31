@@ -5,7 +5,8 @@ __pycache__/
 .env
 # C extensions
 *.so
-code_execution
+code_execution/
+
 
 # Distribution / packaging
 .venv/
